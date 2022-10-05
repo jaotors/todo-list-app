@@ -7,7 +7,7 @@ const List = ({
   onDelete,
   onEditTask,
   isEditingId,
-  editTask
+  editTask,
 }) => {
   return (
     <div className='todo-list'>
@@ -25,7 +25,7 @@ const List = ({
                       onEditTask(value)
                     }}
                     onBlur={() => {
-                      onUpdate(todo.id)
+                      onUpdate(todo.id, editTask)
                     }}
                   />
                 ) : (
@@ -33,7 +33,13 @@ const List = ({
                 )}
               </span>
               {todo.id === isEditingId ? (
-                <button onClick={() => onUpdate(todo.id)}>Update</button>
+                <button
+                  onClick={() => {
+                    onUpdate(todo.id, editTask)
+                  }}
+                >
+                  Update
+                </button>
               ) : (
                 <button onClick={() => onEdit(todo.id, todo.task)}>Edit</button>
               )}
